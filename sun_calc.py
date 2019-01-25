@@ -88,8 +88,10 @@ def Move_sun():
                     taz = -(Sun.Bind.azStart - az)
                 envTex.texture_mapping.rotation.z += taz
                 Sun.Bind.azStart = az
-
-            obj = bpy.context.view_layer.objects.get(Sun.SunObject)
+            
+            string = Sun.SunObject
+            newString = string[3:1000]
+            obj = bpy.context.view_layer.objects.get(newString)
 
             try:
                 obj.location = locX, locY, locZ
@@ -139,7 +141,9 @@ def Move_sun():
 
     if Sun.UseSunObject:
         try:
-            obj = bpy.context.view_layer.objects.get(Sun.SunObject)
+            string = Sun.SunObject
+            newString = string[3:1000]
+            obj = bpy.context.view_layer.objects.get(newString)
             setSunPosition(obj, Sun.SunDistance)
             if obj.type == 'LIGHT':
                 obj.rotation_euler = (

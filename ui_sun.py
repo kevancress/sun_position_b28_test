@@ -12,7 +12,6 @@ from . sun_calc import Degrees, format_lat_long, degToRad, \
 #
 #---------------------------------------------------------------------------
 
-
 class SunPos_Panel(bpy.types.Panel):
 
     bl_idname = "panel.SunPos_world"
@@ -42,10 +41,10 @@ class SunPos_Panel(bpy.types.Panel):
     def disable(self, context, layout):
         p = context.scene.SunPos_pref_property
         if Map.init_zoom_preference:
-            Map.zoom_preferences(bpy.context.user_preferences.inputs.invert_zoom_wheel,
-                             bpy.context.user_preferences.inputs.invert_mouse_zoom)
-            Hdr.zoom_preferences(bpy.context.user_preferences.inputs.invert_zoom_wheel,
-                             bpy.context.user_preferences.inputs.invert_mouse_zoom)
+            Map.zoom_preferences(bpy.context.preferences.inputs.invert_zoom_wheel,
+                             bpy.context.preferences.inputs.invert_mouse_zoom)
+            Hdr.zoom_preferences(bpy.context.preferences.inputs.invert_zoom_wheel,
+                             bpy.context.preferences.inputs.invert_mouse_zoom)
         row = self.layout.row()
         if p.UseOneColumn:
             col1 = row.column()
@@ -161,8 +160,7 @@ class SunPos_Panel(bpy.types.Panel):
         try:
             col.label(text="Use sun object:")
             col.prop_search(sp, "SunObject",
-                context.scene, "objects", text="")
-            Sun.SunObject = sp.SunObject
+                context.view_layer, "objects", text="")
         except:
             pass
 
@@ -219,7 +217,7 @@ class SunPos_Panel(bpy.types.Panel):
         if(sp.UseSunObject):
             try:
                 col.prop_search(sp, "SunObject",
-                    context.scene, "objects", text="")
+                    context.view_layer, "objects", text="")
             except:
                 pass
 
@@ -355,7 +353,7 @@ class SunPos_Panel(bpy.types.Panel):
         if(sp.UseSunObject):
             try:
                 cR.prop_search(sp, "SunObject",
-                    context.scene, "objects", text="")
+                    context.view_layer, "objects", text="")
                 cRi += 1
             except:
                 pass
