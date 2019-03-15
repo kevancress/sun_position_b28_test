@@ -23,7 +23,7 @@ class DisplayAction:
 
     def refresh(self):
         # Touching the cursor forces a screen refresh
-        bpy.context.scene.cursor_location.x += 0.0
+        bpy.context.area.tag_redraw()
 
 
 Display = DisplayAction()

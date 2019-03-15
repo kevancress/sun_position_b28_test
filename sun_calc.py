@@ -108,7 +108,7 @@ def Move_sun():
     totalObjects = len(Sun.Selected_objects)
 
     localTime = Sun.Time
-    if Sun.Longitude > 0:
+    if Sun.Longitude > 0.0:
         zone = Sun.UTCzone * -1
     else:
         zone = Sun.UTCzone
@@ -141,9 +141,8 @@ def Move_sun():
 
     if Sun.UseSunObject:
         try:
-            string = Sun.SunObject
-            newString = string[3:1000]
-            obj = bpy.context.view_layer.objects.get(newString)
+            
+            obj = bpy.context.view_layer.objects.get(Sun.SunObject)
             setSunPosition(obj, Sun.SunDistance)
             if obj.type == 'LIGHT':
                 obj.rotation_euler = (

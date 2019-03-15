@@ -16,7 +16,7 @@ class NorthClass:
         self.isActive = False
 
     def refresh_screen(self):
-        bpy.context.scene.cursor_location.x += 0.0
+        bpy.context.area.tag_redraw()
 
     def activate(self, context):
 

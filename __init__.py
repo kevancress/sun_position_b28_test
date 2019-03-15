@@ -32,7 +32,7 @@
 # <pep8 compliant>
 
 bl_info = {
-    "name": "Sun Position",
+    "name": "Sun Position 2.8",
     "author": "Michael Martin, Kevan Cress",
     "version": (3, 0, 1),
     "blender": (2, 80, 0),
