@@ -23,10 +23,11 @@ class Dashed_Shader_3D ():
         uniform vec4 finalColor;
         
         in float v_ArcLength;
+        out vec4 fragColor;
         
         void main()
         {
             if (step(sin(v_ArcLength * u_Scale), 0.5) == 1) discard;
-            gl_FragColor = finalColor;
+            fragColor = finalColor;
         }
     '''
